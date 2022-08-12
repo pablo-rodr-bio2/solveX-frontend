@@ -2,23 +2,25 @@
   <div class="quote-list">
     <ul>
       <li v-for="quote in quotes" :key="quote.id">
-        <h3>"{{ quote.quote }}", from {{ quote.author }}</h3>
+        <Quote :quote="quote.quote" :author="quote.author" />
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
-import QuoteType from '@/types/Quote';
+import QuoteType from '@/interface/Quote';
 import { defineComponent, PropType } from 'vue'
+import Quote from './SingleQuote.vue';
 
 export default defineComponent({
-  props: {
-    quotes: {
-      required: true,
-      type: Array as PropType<QuoteType[]>
-    }
-  }
+    props: {
+        quotes: {
+            required: true,
+            type: Array as PropType<QuoteType[]>
+        }
+    },
+    components: { Quote }
 })
 </script>
 
